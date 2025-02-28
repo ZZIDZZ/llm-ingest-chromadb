@@ -5,10 +5,13 @@ from sentence_transformers import SentenceTransformer
 from utils.extract import extract_text
 
 # 1. Initialize ChromaDB client
-client = chromadb.Client(
-    Settings(
-        persist_directory="./chroma_db"  # store DB contents here
-    )
+# client = chromadb.Client(
+#     Settings(persist_directory="./chroma_db")
+# )
+
+client = chromadb.PersistentClient(
+    path='./chroma_db',
+    settings=Settings(allow_reset=True)
 )
 
 collection = client.get_or_create_collection("my_documents")
@@ -57,3 +60,7 @@ def ingest_documents(folder_path: str):
 if __name__ == "__main__":
     folder_path = "./docs-data"  # Put all your docs here
     ingest_documents(folder_path)
+    print(client.list_collections())
+    collection = client.get_collection("my_documents")
+    print("Number of docs:", collection.count())
+

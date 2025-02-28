@@ -1,4 +1,6 @@
-chromadb
+chroma_db
+.gradio
+
 *.pyc
 # Byte-compiled / optimized / DLL files
 __pycache__/
