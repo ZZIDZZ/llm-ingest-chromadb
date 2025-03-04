@@ -1,0 +1,9 @@
+chromadb[all]
+sentence-transformers
+pypdf
+python-docx
+python-pptx
+pandas
+gradio
+llama-cpp-python
+langdetect
